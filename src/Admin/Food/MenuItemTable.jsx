@@ -35,40 +35,31 @@ const MenuItemTable = ({ isDashboard, name }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { menu, ingredients, restaurant,auth } = useSelector((store) => store);
+  const { menu, ingredients, restaurant, auth } = useSelector((store) => store);
   const { id } = useParams();
-  const jwt=localStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
 
   useEffect(() => {
-    
-      if(restaurant.usersRestaurant){
-       dispatch( getMenuItemsByRestaurantId({
-        restaurantId: restaurant.usersRestaurant?.id,
-        jwt: localStorage.getItem("jwt"),
-        seasonal: false,
-        vegetarian: false,
-        nonveg: false,
-        foodCategory: "",
-      }));
-      }
-      
-    
-  }, [ingredients.update,restaurant.usersRestaurant]);
-
-  // console.log(
-  //   "-------- ",
-  //   menu.menuItems[1].ingredients,
-  //   categorizedIngredients(menu.menuItems[1].ingredients)
-  // );
-
-  
+    if (restaurant.usersRestaurant) {
+      dispatch(
+        getMenuItemsByRestaurantId({
+          restaurantId: restaurant.usersRestaurant?.id,
+          jwt: localStorage.getItem("jwt"),
+          seasonal: false,
+          vegetarian: false,
+          nonveg: false,
+          foodCategory: "",
+        })
+      );
+    }
+  }, [ingredients.update, restaurant.usersRestaurant]);
 
   const handleFoodAvialability = (foodId) => {
-    dispatch(updateMenuItemsAvailability({foodId,jwt:auth.jwt || jwt}));
+    dispatch(updateMenuItemsAvailability({ foodId, jwt: auth.jwt || jwt }));
   };
 
   const handleDeleteFood = (foodId) => {
-    dispatch(deleteFoodAction({foodId,jwt:auth.jwt || jwt}));
+    dispatch(deleteFoodAction({ foodId, jwt: auth.jwt || jwt }));
   };
 
   return (
@@ -95,9 +86,7 @@ const MenuItemTable = ({ isDashboard, name }) => {
                 <TableCell>Title</TableCell>
                 {/* <TableCell sx={{ textAlign: "center" }}>Category</TableCell> */}
                 {!isDashboard && (
-                  <TableCell sx={{ textAlign: "" }}>
-                    Ingredients
-                  </TableCell>
+                  <TableCell sx={{ textAlign: "" }}>Ingredients</TableCell>
                 )}
                 <TableCell sx={{ textAlign: "center" }}>Price</TableCell>
                 {/* <TableCell sx={{ textAlign: "center" }}>Quantity</TableCell> */}

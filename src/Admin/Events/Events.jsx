@@ -67,12 +67,9 @@ const Events = () => {
       createEventAction({
         data: formValues,
         restaurantId: restaurant.usersRestaurant?.id,
-        jwt
+        jwt,
       })
     );
-    console.log("Image URL:", formValues,restaurant.usersRetaurant?.id);
-    // setFormValues(initialValues);
-    // handleCloseModal();
   };
 
   useEffect(() => {
@@ -88,7 +85,6 @@ const Events = () => {
 
   return (
     <div>
-     
       <div className="p-5">
         <Button
           sx={{ padding: "1rem 2rem" }}

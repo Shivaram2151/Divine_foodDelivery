@@ -53,7 +53,6 @@ const CreateRestaurantForm = () => {
       images: values.images,
     };
     dispatch(createRestaurant({ data, token }));
-    console.log(data);
   };
 
   const formik = useFormik({
@@ -92,16 +91,15 @@ const CreateRestaurantForm = () => {
                 onChange={handleImageChange}
               />
 
-              
               <label className="relative" htmlFor="fileInput">
                 <span className="w-24 h-24 cursor-pointer flex items-center justify-center p-3 border rounded-md border-gray-600">
-                  <AddPhotoAlternateIcon
-                    className="text-white"
-                  />
+                  <AddPhotoAlternateIcon className="text-white" />
                 </span>
-                {uploadImage && <div className="absolute left-0 right-0 top-0 bottom-0 w-24 h-24 flex justify-center items-center">
-                <CircularProgress />
-                </div>}
+                {uploadImage && (
+                  <div className="absolute left-0 right-0 top-0 bottom-0 w-24 h-24 flex justify-center items-center">
+                    <CircularProgress />
+                  </div>
+                )}
               </label>
 
               <div className="flex flex-wrap gap-2">
@@ -273,7 +271,6 @@ const CreateRestaurantForm = () => {
                 value={formik.values.instagram}
               />
             </Grid>
-            
           </Grid>
           <Button variant="contained" color="primary" type="submit">
             Create Restaurant

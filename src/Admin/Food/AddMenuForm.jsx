@@ -70,7 +70,7 @@ const initialValues = {
 const AddMenuForm = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { restaurant, ingredients, auth ,menu} = useSelector((store) => store);
+  const { restaurant, ingredients, auth, menu } = useSelector((store) => store);
   const [uploadImage, setUploadingImage] = useState("");
   const jwt = localStorage.getItem("jwt");
 
@@ -80,7 +80,6 @@ const AddMenuForm = () => {
       values.restaurantId = restaurant.usersRestaurant.id;
 
       dispatch(createMenuItem({ menu: values, jwt: auth.jwt || jwt }));
-      console.log("values ----- ", values);
     },
   });
 
@@ -102,7 +101,7 @@ const AddMenuForm = () => {
 
   useEffect(() => {
     if (menu.message || menu.error) setOpenSnackBar(true);
-  }, [menu.message,menu.error]);
+  }, [menu.message, menu.error]);
 
   const handleCloseSnackBar = () => {
     setOpenSnackBar(false);

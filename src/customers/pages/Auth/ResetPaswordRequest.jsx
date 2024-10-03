@@ -7,8 +7,6 @@ import {
   Typography,
   CssBaseline,
   Container,
-  createTheme,
-  ThemeProvider,
   Backdrop,
   CircularProgress,
 } from "@mui/material";
@@ -33,11 +31,10 @@ const validationSchema = Yup.object({
 const ResetPasswordRequest = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {auth}=useSelector(store=>store)
+  const { auth } = useSelector((store) => store);
 
   const handleSubmit = (values) => {
     // You can handle login submission here, e.g., send data to your server
-    console.log("Login form values:", values);
     dispatch(resetPasswordRequest(values.email));
   };
 
@@ -73,7 +70,7 @@ const ResetPasswordRequest = () => {
                 fullWidth
                 variant="contained"
                 color="primary"
-                sx={{ mt: 2,padding:"1rem" }}
+                sx={{ mt: 2, padding: "1rem" }}
               >
                 Send Reset Password Link
               </Button>
@@ -84,7 +81,6 @@ const ResetPasswordRequest = () => {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={auth.isLoading}
-        
       >
         <CircularProgress color="inherit" />
       </Backdrop>

@@ -47,7 +47,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { cart, auth } = useSelector((store) => store);
   const [openAddressModal, setOpenAddressModal] = useState(false);
-  console.log("cart ", cart);
 
   const handleCloseAddressModal = () => {
     setOpenAddressModal(false);
@@ -74,31 +73,32 @@ const Cart = () => {
         },
       },
     };
-    console.log("data", data);
     if (isValid(cart.cartItems)) {
       dispatch(createOrder(data));
     } else setOpenSnakbar(true);
   };
 
   const createOrderUsingSelectedAddress = (item) => {
-    console.log("cheching", item);
     const data = {
       jwt: localStorage.getItem("jwt"),
       order: {
         restaurantId: cart.cartItems[0].food.restaurant.id,
         deliveryAddress: {
-          fullName: "ashok",
-          streetAddress: "gujrat",
-          city: "gujrat",
-          state: "gujrat",
-          postalCode: "599000",
-          country: "India",
+          fullName: auth.user?.fullName, // Use the logged-in user's full name
+          streetAddress: item.streetAddress, // Use selected address fields from item
+          city: item.city,
+          state: item.state,
+          postalCode: item.pincode,
+          country: item.country || "India", // Default country to "India" if not provided
         },
       },
     };
+
     if (isValid(cart.cartItems)) {
       dispatch(createOrder(data));
-    } else setOpenSnakbar(true);
+    } else {
+      setOpenSnakbar(true);
+    }
   };
 
   const handleCloseSankBar = () => setOpenSnakbar(false);

@@ -12,8 +12,7 @@ import FastfoodIcon from "@mui/icons-material/Fastfood";
 
 const RestaurantDashboard = () => {
   const { id } = useParams();
-  const {restaurant}=useSelector(store=>store);
-  console.log("restaurants id ", id);
+  const { restaurant } = useSelector((store) => store);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,10 +24,8 @@ const RestaurantDashboard = () => {
     );
   }, []);
 
-  console.log("restaurant",restaurant)
   return (
     <div className="px-2">
-      
       <Grid container spacing={1}>
         {/* <Grid item lg={3} xs={12}>
           <AvgCard

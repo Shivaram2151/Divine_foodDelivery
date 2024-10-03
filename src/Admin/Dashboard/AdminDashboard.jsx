@@ -6,11 +6,9 @@ import { getRestaurantByUserId } from "../../State/Customers/Restaurant/restaura
 import AddressCard from "../../customers/components/Address/AddressCard";
 import AddRestaurantCard from "./AddRestaurantCard";
 
-
 const AdminDashboard = () => {
   const params = useParams();
-  const {restaurant}=useSelector(state=>state);
-  console.log("params", params);
+  const { restaurant } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,12 +17,11 @@ const AdminDashboard = () => {
 
   return (
     <div className="lg:px-20">
-     
       <div className="lg:flex flex-wrap justify-center">
         {restaurant.usersRestaurant.map((item) => (
-          <RestaurantCard item={item}/>
+          <RestaurantCard item={item} />
         ))}
-        {restaurant.usersRestaurant.length<1 && <AddRestaurantCard/>}
+        {restaurant.usersRestaurant.length < 1 && <AddRestaurantCard />}
       </div>
     </div>
   );
