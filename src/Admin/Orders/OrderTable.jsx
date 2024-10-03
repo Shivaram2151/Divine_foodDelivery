@@ -103,6 +103,7 @@ const OrdersTable = ({ isDashboard, name }) => {
             <TableBody>
               {restaurantsOrder.orders
                 ?.slice(0, isDashboard ? 7 : restaurantsOrder.orders.length)
+                .reverse()
                 .map((item, index) => (
                   <TableRow
                     className="cursor-pointer"
