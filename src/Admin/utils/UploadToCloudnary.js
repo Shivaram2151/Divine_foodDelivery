@@ -3,10 +3,10 @@ export const uploadToCloudinary = async (pics) => {
     const data = new FormData();
     data.append("file", pics);
     data.append("upload_preset", "divine-social");
-    data.append("cloud_name", "dcpesbd8q");
+    data.append("cloud_name", "dkkkiwf2z");
 
     const res = await fetch(
-      `https://api.cloudinary.com/v1_1/dcpesbd8q/image/upload`,
+      `https://api.cloudinary.com/v1_1/dkkkiwf2z/image/upload`,
       {
         method: "post",
         body: data,
